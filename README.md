@@ -6,7 +6,7 @@ Dimick Beesley, Carson Tillery, Robbie Schneider, and
 
 ## Purpose and Scope
 The purpose is to serve as a proof of concept for an alternative to the most 
-popular existing website uvsultra. (https://www.uvsultra.online/index.php)
+popular existing deckbuilder uvsultra. (https://www.uvsultra.online/index.php)
 
 The functionality we wish to reach as of now consists of 3 things. 
 - browse the database of cards with filtering
