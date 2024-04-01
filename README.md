@@ -1,6 +1,9 @@
 # uvs-deck-builder
 A simple deck builder application for the Universus trading card game. 
 
+## Group Members
+Dimick Beesley, Carson Tillery
+
 ## Purpose and Scope
 The purpose is to serve as a proof of concept for an alternative to the most 
 popular existing website uvsultra. (https://www.uvsultra.online/index.php)
