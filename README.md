@@ -8,4 +8,4 @@ popular existing website uvsultra. (https://www.uvsultra.online/index.php)
 The functionality we wish to reach as of now consists of 3 things. 
 - browse the database of cards with filtering
 - browse the list of all decks that have been made
-- edit or create an existing deck
+- edit, create, or delete an existing deck
