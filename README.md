@@ -2,7 +2,7 @@
 A simple deck builder application for the Universus trading card game. 
 
 ## Group Members
-Dimick Beesley, Carson Tillery
+Dimick Beesley, Carson Tillery, Robbie Schnieder, and 
 
 ## Purpose and Scope
 The purpose is to serve as a proof of concept for an alternative to the most 
