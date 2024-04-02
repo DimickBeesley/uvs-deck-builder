@@ -9,8 +9,8 @@ Assets, Actions.
 Dimick Beesley, Carson Tillery, Robbie Schneider, and Xueqian Li
 
 ## Problem Statement
-While it provides all the necesarry functionality, the current website used
-for deck building (uvsultra) is ugly and hard to work with. Therefore, we 
+While it provides all the necessary functionality, the current website used
+for deck building (uvsultra) is unappealing and difficult to work with. Therefore, we 
 are going to redesign the deck builder interface to make it more attractive 
 and usable.
 
