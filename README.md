@@ -1,5 +1,7 @@
 # uvs-deck-builder
-A simple deck builder application for the Universus trading card game. 
+## Problem Statement
+We would like to make a simple deck builder application for the Universus
+trading card game. 
 
 ## Group Members
 Dimick Beesley, Carson Tillery, Robbie Schneider, and Xueqian Li
