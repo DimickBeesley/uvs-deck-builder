@@ -5,14 +5,14 @@ between two characters in hand-to-hand combat. There are five different
 card types described as the following, Characters, Attacks, Foundations, 
 Assets, Actions. 
 
+## Group Members
+Dimick Beesley, Carson Tillery, Robbie Schneider, and Xueqian Li
+
 ## Problem Statement
 While it provides all the necesarry functionality, the current website used
 for deck building (uvsultra) is ugly and hard to work with. Therefore, we 
 are going to redesign the deck builder interface to make it more attractive 
 and usable.
-
-## Group Members
-Dimick Beesley, Carson Tillery, Robbie Schneider, and Xueqian Li
 
 ## Purpose and Scope
 The purpose is to serve as a proof of concept for an alternative uvsultra
