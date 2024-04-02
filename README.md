@@ -15,7 +15,7 @@ are going to redesign the deck builder interface to make it more attractive
 and usable.
 
 ## Purpose and Scope
-The purpose is to serve as a proof of concept for an alternative uvsultra
+The purpose is to serve as a proof of concept for an alternative to uvsultra
 (https://www.uvsultra.online/index.php)
 
 The functionality we wish to reach as of now consists of 3 things. 
