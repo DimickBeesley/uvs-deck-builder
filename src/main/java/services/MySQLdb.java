@@ -4,10 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import models.BookModel;
+import models.CardModel;
 import models.UserModel;
 
+//import javax.smartcardio.Card;
+
 public class MySQLdb {
-    String url = "jdbc:mysql://localhost:3306/library_catalog?useTimezone=true&serverTimezone=UTC";
+    String url = "jdbc:mysql://localhost:3306/deck_builder?useTimezone=true&serverTimezone=UTC";
     String username = "root";
     String password = "00001111";
     Connection connection = null;
@@ -77,74 +80,144 @@ public class MySQLdb {
 
     }
 
-    public List<BookModel> fetchALL() throws SQLException {
-        String qGetBook = "select books.book_name, topics.topic_name, authors.author_name \n" +
-                "from books left join topics \n" +
-                "on books.topic_id = topics.topic_id \n" +
-                "join authors\n" +
-                "on books.author_id = authors.author_id";
-        List<BookModel> list = new ArrayList();
-        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
+    public List<CardModel> fetchCards(List<String> parameters) throws SQLException {
+
+//        for (int i=0;i<parameters.size();i++){
+//
+//
+//        }
+        String set = parameters.get(0);
+        String type = parameters.get(1);
+        String rarity = parameters.get(2);
+        String set_string;
+        String type_string;
+        String rarity_string;
+        String temp_q;
+        String q;
+        Boolean flag = false;
+        Boolean set_flag = true;
+        if (set.equals("all")) {
+            set_string = "";
+        }else{
+            set_string = "card.set like "+"'"+set+"%"+"'and";
+            flag = true;
+        }
+
+        if (type.equals("all")) {
+            type_string = "";
+        }else{
+            type_string = "card.type="+"'"+type+"'"+" and";
+            flag = true;
+            set_flag = false;
+        }
+
+        if (rarity.equals("all")) {
+            rarity_string = "";
+        }else{
+            rarity_string = "card.rarity="+"'"+rarity+"'"+" and";
+            flag = true;
+            set_flag = false;
+        }
+
+
+
+        if (flag && !set_flag){
+            temp_q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where " + set_string +" "+type_string+" "+rarity_string;
+            q = temp_q.substring(0,temp_q.length()-4);
+        } else if (flag && set_flag) {
+            temp_q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where " + set_string +" "+type_string+" "+rarity_string;
+            q = temp_q.substring(0,temp_q.length()-5);
+        } else{
+            q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card";
+        }
+
+        List<CardModel> list = new ArrayList();
+        PreparedStatement preparedStatement = this.connection.prepareStatement(q);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            String book_name = resultSet.getString("book_name");
-            String topic_name = resultSet.getString("topic_name");
-            String author_name = resultSet.getString("author_name");
-            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
-            list.add(bookModel);
+            String name_q = resultSet.getString("name");
+            String set_q = resultSet.getString("set");
+            String type_q = resultSet.getString("type");
+            String rarity_q = resultSet.getString("rarity");
+            String abilities_q = resultSet.getString("abilities");
+            String control_q = resultSet.getString("control");
+            String difficult_q = resultSet.getString("difficulty");
+            CardModel card = new CardModel(name_q,set_q,type_q,rarity_q,abilities_q,control_q,difficult_q);
+            list.add(card);
         }
 
         resultSet.close();
         preparedStatement.close();
         return list;
     }
-
-    public List<BookModel> fetchXML() throws SQLException {
-        String qGetBook = "select books.book_name, topics.topic_name, authors.author_name \n" +
-                "from books left join topics \n" +
-                "on books.topic_id = topics.topic_id \n" +
-                "join authors\n" +
-                "on books.author_id = authors.author_id\n" +
-                "where topics.topic_id = 1;";
-        List<BookModel> list = new ArrayList();
-        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()) {
-            String book_name = resultSet.getString("book_name");
-            String topic_name = resultSet.getString("topic_name");
-            String author_name = resultSet.getString("author_name");
-            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
-            list.add(bookModel);
-        }
-
-        resultSet.close();
-        preparedStatement.close();
-        return list;
-    }
-
-    public List<BookModel> fetchJSP() throws SQLException {
-        String qGetBook = "select books.book_name, topics.topic_name, authors.author_name \n" +
-                "from books left join topics \n" +
-                "on books.topic_id = topics.topic_id \n" +
-                "join authors\n" +
-                "on books.author_id = authors.author_id\n" +
-                "where topics.topic_id = 2;";
-        List<BookModel> list = new ArrayList();
-        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()) {
-            String book_name = resultSet.getString("book_name");
-            String topic_name = resultSet.getString("topic_name");
-            String author_name = resultSet.getString("author_name");
-            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
-            list.add(bookModel);
-        }
-
-        resultSet.close();
-        preparedStatement.close();
-        return list;
-    }
+//
+//    public List<BookModel> fetchALL() throws SQLException {
+//        String qGetBook = "select card.name, card.type, card.abilities \n" +
+//                "from card\n" +
+//                "where card.type = \"Action\"";
+//        List<BookModel> list = new ArrayList();
+//        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()) {
+//            String book_name = resultSet.getString("name");
+//            String topic_name = resultSet.getString("type");
+//            String author_name = resultSet.getString("abilities");
+//            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
+//            list.add(bookModel);
+//        }
+//
+//        resultSet.close();
+//        preparedStatement.close();
+//        return list;
+//    }
+//
+//    public List<BookModel> fetchXML() throws SQLException {
+//        String qGetBook = "select books.book_name, topics.topic_name, authors.author_name \n" +
+//                "from books left join topics \n" +
+//                "on books.topic_id = topics.topic_id \n" +
+//                "join authors\n" +
+//                "on books.author_id = authors.author_id\n" +
+//                "where topics.topic_id = 1;";
+//        List<BookModel> list = new ArrayList();
+//        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()) {
+//            String book_name = resultSet.getString("book_name");
+//            String topic_name = resultSet.getString("topic_name");
+//            String author_name = resultSet.getString("author_name");
+//            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
+//            list.add(bookModel);
+//        }
+//
+//        resultSet.close();
+//        preparedStatement.close();
+//        return list;
+//    }
+//
+//    public List<BookModel> fetchJSP() throws SQLException {
+//        String qGetBook = "select books.book_name, topics.topic_name, authors.author_name \n" +
+//                "from books left join topics \n" +
+//                "on books.topic_id = topics.topic_id \n" +
+//                "join authors\n" +
+//                "on books.author_id = authors.author_id\n" +
+//                "where topics.topic_id = 2;";
+//        List<BookModel> list = new ArrayList();
+//        PreparedStatement preparedStatement = this.connection.prepareStatement(qGetBook);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()) {
+//            String book_name = resultSet.getString("book_name");
+//            String topic_name = resultSet.getString("topic_name");
+//            String author_name = resultSet.getString("author_name");
+//            BookModel bookModel = new BookModel(book_name,topic_name,author_name);
+//            list.add(bookModel);
+//        }
+//
+//        resultSet.close();
+//        preparedStatement.close();
+//        return list;
+//    }
 }
