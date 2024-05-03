@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="models.UserModel" %>
 <%@ page import="java.util.List" %>
+<style><%@include file="styles.css"%></style>
+
 <html>
 <head>
     <title>Title</title>

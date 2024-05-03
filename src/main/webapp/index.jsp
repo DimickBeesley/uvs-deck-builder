@@ -3,33 +3,30 @@
 <%@page import="java.sql.*"%>
 <%@page import="jakarta.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style><%@include file="styles.css"%></style>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>UVS-DECK-BUILDER</title>
+    <title>UVS DECK BUILDER</title>
 </head>
+<div class="header">
+    <div>
+        <a href="index.jsp">
+            <h1 align="left" style="padding-left: 50px; font-family: 'Courier New',serif; font-size: 40px; color: #EFF0F3;">
+                UVS-DECK-BUILDER
+            </h1>
+        </a>
+    </div>
+    <h2 style="padding-left: 50px;">Welcome ${user.getUsername()}
+        <a class="button" href="singuppage.jsp">Sign up</a>
+        <a class="button" href="loginpage.jsp">Login</a>
+    </h2>
+</div>
 <body>
-<div>
-    <a href="index.jsp">
-        <h1>UVS-DECK-BUILDER</h1>
-    </a>
-</div>
-
-<div>
-    <a href="singuppage.jsp">
-        <p>Sign up</p>
-    </a>
-</div>
-
-<div>
-    <a href="loginpage.jsp">
-        <p>Login</p>
-    </a>
-</div>
-
 <form name="fetchCardsInformation" method="post" action="FetchCardsInformation">
-    <p>Please select card set</p>>>
+    <p>Filter by card set</p>>>
     <select name="selectset">
         <option value="all">All</option>
         <option value="set 8">Set-8</option>
@@ -39,7 +36,7 @@
         <option value="set 12">Set-12</option>
         <option value="set 14">Set-14</option>
     </select>
-    <p>Please select card type</p>>>
+    <p>Filter by card type</p>>>
     <select name="selecttype">
         <option value="all">All</option>
         <option value="Character">Character</option>
@@ -48,7 +45,7 @@
         <option value="Attack">Attack</option>
         <option value="Foundation">Foundation</option>
     </select>
-    <p>Please select card rarity</p>>>
+    <p>Filter by card rarity</p>>>
     <select name="selectrarity">
         <option value="all">All</option>
         <option value="Common">Common</option>
@@ -59,10 +56,10 @@
     <input type="hidden" name="whichpage" value="index.jsp">
     <input type="submit" value="Submit">
 
-    <table>
+    <table cellpadding="5">
         <tr>
             <th>Name</th>
-            <th>Set_Info</th>
+            <th>Set Info</th>
             <th>Type</th>
             <th>Rarity</th>
             <th>Abilities</th>

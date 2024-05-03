@@ -1,0 +1,59 @@
+body {
+    background: #FAFDFE;
+}
+
+.header {
+    padding: 10px;
+    margin: 0;
+    text-align: left;
+    background: #1F4152;
+    color: #EFF0F3;
+    font-size: 20px;
+    width: 100%;
+}
+
+.header table {
+    min-width: 120px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 6px;
+    background: #FAFDFE;
+}
+
+label {
+    color: #FAFDFE;
+}
+
+*:not(.header){
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    font-family: 'arial', serif;
+}
+
+.button {
+    font: bold 20px Arial;
+    text-decoration: none;
+    background-color: #EFF0F3;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    border-radius: 6px;
+    float: right;
+    margin-right: 50px;
+}
+
+form {
+    margin-left: 50px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

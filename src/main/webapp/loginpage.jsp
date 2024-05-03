@@ -1,23 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@include file="styles.css"%></style>
+
 <html>
 <head>
     <title>Login</title>
 </head>
+<div class="header">
+    <div>
+        <a href="index.jsp">
+            <h1 align="left" style="padding-left: 50px; font-family: 'Courier New',serif; font-size: 40px; color: #EFF0F3;">
+                UVS-DECK-BUILDER
+            </h1>
+        </a>
+    </div>
+    <h2 style="padding-left: 50px;">Welcome ${user.getUsername()}
+        <a class="button" href="singuppage.jsp">Sign up</a>
+    </h2>
+</div>
 <body>
-<div>
-    <a href="index.jsp">
-        <h1>Library Catalog</h1>
-    </a>
-</div>
-<div>
-    <a href="singuppage.jsp">
-        <h1>Sign Up</h1>
-    </a>
-</div>
 <p>${error}</p>
 <div>
     <form name="loginform" method="POST" action="LoginServlet">
-        <table border="0" cellpadding="5" align="center" width = "800px">
+        <table border="0" cellpadding="5" align="center" width = "350px">
             <tr>
                 <td colspan="2"><h3>Login</h3></td>
             </tr>
