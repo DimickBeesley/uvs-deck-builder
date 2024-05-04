@@ -2,12 +2,18 @@
 package servlets;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import models.CardModel;
 import models.UserModel;
 import services.MySQLdb;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+
+//import javax.smartcardio.Card;
 
 @WebServlet(
         name = "LoginServlet",

@@ -3,11 +3,9 @@ package services;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import models.BookModel;
+
 import models.CardModel;
 import models.UserModel;
-
-//import javax.smartcardio.Card;
 
 public class MySQLdb {
     String url = "jdbc:mysql://localhost:3306/deck_builder?useTimezone=true&serverTimezone=UTC";
@@ -33,7 +31,7 @@ public class MySQLdb {
         if (instance == null) {
             instance = new MySQLdb();
         }
-
+//        instance = new MySQLdb();
         return instance;
     }
 
@@ -81,11 +79,6 @@ public class MySQLdb {
     }
 
     public List<CardModel> fetchCards(List<String> parameters) throws SQLException {
-
-//        for (int i=0;i<parameters.size();i++){
-//
-//
-//        }
         String set = parameters.get(0);
         String type = parameters.get(1);
         String rarity = parameters.get(2);
@@ -118,9 +111,6 @@ public class MySQLdb {
             flag = true;
             set_flag = false;
         }
-
-
-
         if (flag && !set_flag){
             temp_q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where " + set_string +" "+type_string+" "+rarity_string;
             q = temp_q.substring(0,temp_q.length()-4);
@@ -150,6 +140,102 @@ public class MySQLdb {
         resultSet.close();
         preparedStatement.close();
         return list;
+    }
+
+    public CardModel fetchIndividualCard(String name) throws SQLException {
+
+        String q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where card.name="+"'"+name+"'";
+        String name_q = "";
+        String set_q = "";
+        String type_q = "";
+        String rarity_q = "";
+        String abilities_q = "";
+        String control_q = "";
+        String difficult_q = "";
+//        String q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card";
+        PreparedStatement preparedStatement = this.connection.prepareStatement(q);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            name_q = resultSet.getString("name");
+            set_q = resultSet.getString("set");
+            type_q = resultSet.getString("type");
+            rarity_q = resultSet.getString("rarity");
+            abilities_q = resultSet.getString("abilities");
+            control_q = resultSet.getString("control");
+            difficult_q = resultSet.getString("difficulty");
+        }
+        CardModel card = new CardModel(name_q,set_q,type_q,rarity_q,abilities_q,control_q,difficult_q);
+
+        return card;
+
+//        for (int i=0;i<parameters.size();i++){
+//
+//
+//        }
+//        String set = parameters.get(0);
+//        String type = parameters.get(1);
+//        String rarity = parameters.get(2);
+//        String set_string;
+//        String type_string;
+//        String rarity_string;
+//        String temp_q;
+//        String q;
+//        Boolean flag = false;
+//        Boolean set_flag = true;
+//        if (set.equals("all")) {
+//            set_string = "";
+//        }else{
+//            set_string = "card.set like "+"'"+set+"%"+"'and";
+//            flag = true;
+//        }
+//
+//        if (type.equals("all")) {
+//            type_string = "";
+//        }else{
+//            type_string = "card.type="+"'"+type+"'"+" and";
+//            flag = true;
+//            set_flag = false;
+//        }
+//
+//        if (rarity.equals("all")) {
+//            rarity_string = "";
+//        }else{
+//            rarity_string = "card.rarity="+"'"+rarity+"'"+" and";
+//            flag = true;
+//            set_flag = false;
+//        }
+//
+//
+//
+//        if (flag && !set_flag){
+//            temp_q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where " + set_string +" "+type_string+" "+rarity_string;
+//            q = temp_q.substring(0,temp_q.length()-4);
+//        } else if (flag && set_flag) {
+//            temp_q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card where " + set_string +" "+type_string+" "+rarity_string;
+//            q = temp_q.substring(0,temp_q.length()-5);
+//        } else{
+//            q = "select card.name,card.set,card.type,card.rarity,card.abilities,card.control,card.difficulty from card";
+//        }
+//
+//        List<CardModel> list = new ArrayList();
+//        PreparedStatement preparedStatement = this.connection.prepareStatement(q);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()) {
+//            String name_q = resultSet.getString("name");
+//            String set_q = resultSet.getString("set");
+//            String type_q = resultSet.getString("type");
+//            String rarity_q = resultSet.getString("rarity");
+//            String abilities_q = resultSet.getString("abilities");
+//            String control_q = resultSet.getString("control");
+//            String difficult_q = resultSet.getString("difficulty");
+//            CardModel card = new CardModel(name_q,set_q,type_q,rarity_q,abilities_q,control_q,difficult_q);
+//            list.add(card);
+//        }
+//
+//        resultSet.close();
+//        preparedStatement.close();
+//        return list;
     }
 //
 //    public List<BookModel> fetchALL() throws SQLException {
