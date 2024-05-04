@@ -6,6 +6,7 @@ card types described as the following, Characters, Attacks, Foundations,
 Assets, Actions. 
 
 #DEMO VIDEO
+
 [https://youtu.be/fgb8vwgbjG0](https://youtu.be/fgb8vwgbjG0?si=OPlA2bMDeLg-efT_)
 
 ## Group Members
