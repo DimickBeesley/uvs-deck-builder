@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style><%@include file="styles.css"%></style>
 
 <html>
 <head>
@@ -13,10 +14,10 @@
 <form name="createnewdeck" method="post" action="CreateNewDeckServlet">
   <p>Please input your new deck name</p>
   <input type="text" name="newdeckname"  />
-  <p>If you finish the deck building, pleaase click the Done button"</p>
+  <p>Once you're satisfied with the deck, give your deck a name and click "Done"</p>
   <input type="submit" name="done" value="Done">
 
-  <p>Please select card set</p>>>
+  <p>Filter by card set</p>>>
   <select name="selectset">
     <option value="all">All</option>
     <option value="set 8">Set-8</option>
@@ -26,7 +27,7 @@
     <option value="set 12">Set-12</option>
     <option value="set 14">Set-14</option>
   </select>
-  <p>Please select card type</p>>>
+  <p>Filter by card type</p>>>
   <select name="selecttype">
     <option value="all">All</option>
     <option value="Character">Character</option>
@@ -35,7 +36,7 @@
     <option value="Attack">Attack</option>
     <option value="Foundation">Foundation</option>
   </select>
-  <p>Please select card rarity</p>>>
+  <p>Filter by card rarity</p>>>
   <select name="selectrarity">
     <option value="all">All</option>
     <option value="Common">Common</option>
@@ -69,7 +70,7 @@
       <td>${card.getAbilities()}</td>
       <td>${card.getControl()}</td>
       <td>${card.getDifficult()}</td>
-      <td><a href="CreateNewDeckServlet?cardname=${card.getName()}">Add it to the current deck</a></td>
+      <td><a href="CreateNewDeckServlet?cardname=${card.getName()}">Add to deck</a></td>
       <p>${error}</p>
     </tr>
     </c:forEach>

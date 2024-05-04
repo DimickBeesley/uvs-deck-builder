@@ -10,7 +10,7 @@ import models.UserModel;
 public class MySQLdb {
     String url = "jdbc:mysql://localhost:3306/deck_builder?useTimezone=true&serverTimezone=UTC";
     String username = "root";
-    String password = "00001111";
+    String password = "P@ssw0rd";
     Connection connection = null;
     static MySQLdb instance = null;
 

@@ -76,7 +76,6 @@ public class CreateNewDeckServlet extends HttpServlet {
                     request.setAttribute("error", "Oh,No! Already in your deck!!!!");
                     requestDispatcher.forward(request, response);
                 }
-//
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
