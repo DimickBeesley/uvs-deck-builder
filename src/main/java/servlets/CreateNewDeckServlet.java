@@ -58,7 +58,7 @@ public class CreateNewDeckServlet extends HttpServlet {
             user.addBuildernames(newdeckname);
             user.resetDeck();
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("loginredirectpage.jsp");
-            request.setAttribute("error", "Congrats! Add one deck to your system.");
+            request.setAttribute("error", "Congratulations, you've created a new deck!");
             requestDispatcher.forward(request, response);
         }else if(!(cardname==null)) {
             MySQLdb db = MySQLdb.getInstance();
@@ -69,11 +69,11 @@ public class CreateNewDeckServlet extends HttpServlet {
                     user.addCurnamelist(card.getName());
 
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("addconfimation.jsp");
-                    request.setAttribute("error", "Have added the card into your current deck builder. Go back to select more");
+                    request.setAttribute("error", "The card has been added to your deck. You may add more as you wish.");
                     requestDispatcher.forward(request, response);
                 } else {
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("addconfimation.jsp");
-                    request.setAttribute("error", "Oh,No! Already in your deck!!!!");
+                    request.setAttribute("error", "This card already exists in the current deck. Please select a different one.");
                     requestDispatcher.forward(request, response);
                 }
             } catch (SQLException e) {

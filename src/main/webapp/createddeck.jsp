@@ -20,12 +20,13 @@
     </h2>
 </div>
 <body>
-<h2 style="padding-left: 50px;">We have the following decks:</h2>
+<h2 style="padding-left: 50px;">You've created the following decks:</h2>
 <c:forEach var="eachbuild" items="${user.buildernames}">
-<h2 style="padding-left: 50px;">Deck name: ${eachbuild}</h2>
-<h2 style="padding-left: 50px;">For each deck, it includes following cards</h2>
+<h2 style="padding-left: 50px;">- ${eachbuild}</h2>
+</c:forEach>
+<h2 style="padding-left: 50px;">The cards within these decks are listed below, in the same order as above:</h2>
     <c:forEach var="eachbuilder" items="${user.differentdeckbuilders}">
-<table style="padding-left: 50px;">
+<table style="padding-left: 50px;" cellpadding="5">
     <tr>
         <th>Name</th>
         <th>Set_Info</th>
@@ -52,6 +53,5 @@
         <p></p>
         <p></p>
     </c:forEach>
-</c:forEach>
 </body>
 </html>

@@ -19,7 +19,6 @@
     </div>
     <h2 style="padding-left: 50px;">Welcome ${user.getUsername()}
         <a class="button" href="LogoutServlet">Log Out</a>
-        <a class="button" href="index.jsp">View Cards</a>
     </h2>
 </div>
 
@@ -28,7 +27,7 @@
     <p>${error}</p>
     <p>Please select a function</p>>>
     <select name="fn">
-        <option value="scd">Show your created deck(s)</option>
+        <option value="scd">View your created deck(s)</option>
         <option value="cd">Create a new deck</option>
 <%--        <option value="lo">Log out</option>--%>
     </select>

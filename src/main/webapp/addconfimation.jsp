@@ -1,11 +1,13 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@include file="styles.css"%></style>
+
 <html>
 <head>
-    <title>Title</title>
+    <title>Deck Builder - Confirmation</title>
 
 </head>
 <body>
-<h1>${error}</h1>
+<h1 align="center">${error}</h1>
 </body>
 </html>

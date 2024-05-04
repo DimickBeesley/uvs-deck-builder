@@ -7,8 +7,22 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Deck Builder</title>
 </head>
+
+<div class="header">
+  <div>
+    <a href="index.jsp">
+      <h1 align="left" style="padding-left: 50px; font-family: 'Courier New',serif; font-size: 40px; color: #EFF0F3;">
+        UVS-DECK-BUILDER
+      </h1>
+    </a>
+  </div>
+  <h2 style="padding-left: 50px;">Welcome ${user.getUsername()}
+    <a class="button" href="loginredirectpage.jsp">Back to User Home</a>
+  </h2>
+</div>
+
 <body>
 
 <form name="createnewdeck" method="post" action="CreateNewDeckServlet">
@@ -49,7 +63,7 @@
 
 
 
-  <table>
+  <table cellpadding="5">
     <tr>
       <th>Name</th>
       <th>Set_Info</th>
