@@ -7,13 +7,8 @@ import java.util.List;
 
 import models.CardModel;
 import services.MySQLdb;
-import models.BookModel;
-import models.UserModel;
-import services.MySQLdb;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import models.UserModel;
-import services.MySQLdb;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -47,33 +42,6 @@ public class FetchCardsInformation extends HttpServlet {
             throw new RuntimeException(e);
         }
         request.setAttribute("cards", cards);
-
-//        if(selectItem.equals("character")) {
-//            List<BookModel> bookModelList = null;
-//            try {
-//                bookModelList = db.fetchALL();
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            request.setAttribute("list_of_books", bookModelList);
-//
-//        } else if (selectItem.equals("action")) {
-//            List<BookModel> bookModelList = null;
-//            try {
-//                bookModelList = db.fetchXML();
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            request.setAttribute("list_of_books", bookModelList);
-//        }else if(selectItem.equals("asset")) {
-//            List<BookModel> bookModelList = null;
-//            try {
-//                bookModelList = db.fetchJSP();
-//            } catch (SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            request.setAttribute("list_of_books", bookModelList);
-//        }
         requestDispatcher = request.getRequestDispatcher(whichpage);
         requestDispatcher.forward(request, response);
 

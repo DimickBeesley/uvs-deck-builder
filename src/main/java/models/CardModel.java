@@ -8,6 +8,18 @@ public class CardModel {
     String abilities;
     String control;
     String difficult;
+    String deckname;
+
+    public CardModel() {
+        this.name = "";
+        this.setinfo = "";
+        this.type = "";
+        this.rarity = "";
+        this.abilities = "";
+        this.control = "";
+        this.difficult = "";
+        this.deckname = "";
+    }
 
     public CardModel(String name, String setinfo, String type, String rarity, String abilities, String control, String difficult) {
         this.name = name;
@@ -17,6 +29,25 @@ public class CardModel {
         this.abilities = abilities;
         this.control = control;
         this.difficult = difficult;
+    }
+
+    public CardModel(String name, String setinfo, String type, String rarity, String abilities, String control, String difficult,String deckname) {
+        this.name = name;
+        this.setinfo = setinfo;
+        this.type = type;
+        this.rarity = rarity;
+        this.abilities = abilities;
+        this.control = control;
+        this.difficult = difficult;
+        this.deckname = deckname;
+    }
+
+    public String getDeckname() {
+        return deckname;
+    }
+
+    public void setDeckname(String deckname) {
+        this.deckname = deckname;
     }
 
     public String getName() {

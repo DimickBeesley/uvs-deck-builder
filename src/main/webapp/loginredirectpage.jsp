@@ -8,47 +8,22 @@
     <title>Title</title>
 </head>
 <body>
-
-<h1>Welcome, ${user.getUsername()}</h1>
-<div>
-    <a href="cart.jsp">
-        <h1>Your Cart</h1>
-    </a>
-</div>
 <div>
     <a href="LogoutServlet">
         <p>Log out</p>
     </a>
 </div>
+<h1>Welcome, ${user.getUsername()}</h1>
 
-<form name="fetchbooks" method="post" action="FetchBooksServlet">
-    <select name="selectitem">
-        <option value="all">All</option>
-        <option value="xml">XML</option>
-        <option value="jsp">JSP</option>
+<form name="loginRedirectHelp" method="post" action="LoginRedirectHelp">
+    <p>${error}</p>
+    <p>Please select a function</p>>>
+    <select name="fn">
+        <option value="scd">Show your created deck(s)</option>
+        <option value="cd">Create a new deck</option>
+<%--        <option value="lo">Log out</option>--%>
     </select>
-    <input type="hidden" name="whichpage" value="loginredirectpage.jsp">
     <input type="submit" value="Submit">
-
-    <table>
-        <tr>
-            <th>Book name</th>
-            <th>Topic</th>
-            <th>Author</th>
-            <th>Action</th>
-        </tr>
-
-        <c:forEach var="each_book" items="${list_of_books}">
-            request.setAttribute("each_book", each_book);
-            <tr>
-                <td>${each_book.getBookname()}</td>
-                <td>${each_book.getTopic()}</td>
-                <td>${each_book.getAuthor()}</td>
-                <td><a href="ReserveServlet?bookname=${each_book.getBookname()}">Reserve a copy</a></td>>
-            </tr>
-        </c:forEach>
-    </table>
-
 </form>
 
 </body>

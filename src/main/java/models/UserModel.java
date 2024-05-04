@@ -9,7 +9,11 @@ public class UserModel {
     String username;
     String password;
     boolean ifExistedUser;
-    List<String> borrowedBooks = new ArrayList<>();
+    ArrayList<CardModel> decks = new ArrayList<>();
+    ArrayList<String> curnamelist = null;
+    ArrayList<ArrayList<CardModel>> differentdeckbuilders = null;
+    ArrayList<String> buildernames = null;
+
 
 
     public UserModel(String firstname, String lastname, String username, String password, boolean ifExistedUser) {
@@ -18,7 +22,14 @@ public class UserModel {
         this.username = username;
         this.password = password;
         this.ifExistedUser = ifExistedUser;
-        this.borrowedBooks = new ArrayList<>();
+        this.decks = new ArrayList<CardModel>();
+        this.curnamelist = new ArrayList<String>();
+        this.differentdeckbuilders = new ArrayList<ArrayList<CardModel>>();
+        this.buildernames = new ArrayList<String>();
+    }
+
+    public String getDeckname() {
+        return lastname;
     }
 
     public boolean isIfExistedUser() {
@@ -61,10 +72,41 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setBorrowedBooks(String borrowedBook) {
-        this.borrowedBooks.add(borrowedBook);
+    public void addDeck(CardModel borrowedBook) {
+        this.decks.add(borrowedBook);
     }
-    public List<String> getBorrowedBooks() {
-        return borrowedBooks;
+    public void resetDeck() {
+        this.decks = new ArrayList<CardModel>();
+    }
+    public ArrayList<CardModel> getDecks() {
+        return this.decks;
+    }
+
+    public ArrayList<String> getCurnamelist() {
+        return curnamelist;
+    }
+
+    public void addCurnamelist(String par) {
+        this.curnamelist.add(par);
+    }
+
+    public void resetCurnamelist() {
+        this.curnamelist = new ArrayList<String>();
+    }
+
+    public ArrayList<ArrayList<CardModel>> getDifferentdeckbuilders() {
+        return differentdeckbuilders;
+    }
+
+    public void addDifferentdeckbuilders(ArrayList<CardModel> paramet) {
+        differentdeckbuilders.add(paramet);
+    }
+
+    public ArrayList<String> getBuildernames() {
+        return buildernames;
+    }
+
+    public void addBuildernames(String par) {
+        this.buildernames.add(par);
     }
 }

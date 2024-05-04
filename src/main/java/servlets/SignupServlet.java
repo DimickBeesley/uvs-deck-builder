@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
+import models.CardModel;
 import models.UserModel;
 import services.MySQLdb;
 
@@ -51,6 +52,8 @@ public class SignupServlet extends HttpServlet {
             }
             else {
                 session.setAttribute("user", userModel);
+                CardModel cardModel = new CardModel();
+                session.setAttribute("card", cardModel);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("loginredirectpage.jsp");
                 requestDispatcher.forward(request, response);
             }
